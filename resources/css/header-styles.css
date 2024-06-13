@@ -1,0 +1,35 @@
+header {
+    background-color: #67d0cc;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 1rem;
+}
+
+.logo img {
+    width: 200px;
+    height: auto;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #121212;
+}
+
+nav li {
+    color: #f6f6f6;
+}
+nav a {
+    text-decoration: none;
+}
+
+.header-right-corner img {
+    width: 40px;
+    height: auto;
+}

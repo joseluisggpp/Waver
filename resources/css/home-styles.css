@@ -1,0 +1,33 @@
+.cta-to-detection {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.carousel-container {
+    margin-top: 20px;
+    background-color: #67d0cc;
+    /* Color azul */
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.owl-carousel img {
+    width: 100%;
+    height: 200px;
+    /* Ajusta la altura según tu diseño */
+    object-fit: cover;
+}
+button {
+    margin-top: 20px;
+    background-color: #121212;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.wave-img {
+    border-radius: 5px;
+}

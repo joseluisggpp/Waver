@@ -1,0 +1,38 @@
+p {
+    color: #f6f6f6;
+}
+
+footer .copyright {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    background-color: #333333;
+}
+
+.footer-container {
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    background-color: #121212;
+}
+
+.social-icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.social-icons .logos img {
+    width: 40px;
+    height: auto;
+}
+.atributos-legales {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+a {
+    text-decoration: none;
+}
