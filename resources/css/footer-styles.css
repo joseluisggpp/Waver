@@ -28,7 +28,7 @@ footer .copyright {
     width: 40px;
     height: auto;
 }
-.atributos-legales {
+.atributos-legales p {
     display: flex;
     flex-direction: column;
     gap: 10px;

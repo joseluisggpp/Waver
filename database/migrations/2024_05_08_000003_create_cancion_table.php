@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cancion', function (Blueprint $table) {
+        Schema::create('song', function (Blueprint $table) {
             $table->id();
             $table->string('titulo');
             $table->string('artista')->nullable();
             $table->string('album')->nullable();
             $table->integer('duracion');
+            $table->string('imagen_album'); // Nuevo campo para la imagen del álbum
+            $table->string('archivo_mp3'); // Nuevo campo para el archivo MP3 de la canción
 
             $table->timestamps();
         });
@@ -27,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cancion');
+        Schema::dropIfExists('song');
     }
 };

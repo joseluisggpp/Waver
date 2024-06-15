@@ -1,0 +1,48 @@
+/* CSS personalizado para la vista de detalles de canción */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.song-show-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Alinear los elementos en la parte superior */
+    gap: 20px; /* Espacio entre las dos columnas */
+}
+.song-data-container p {
+    margin-top: 2%;
+    color: #121212;
+    text-align: center;
+}
+.song-image-album-container {
+    flex-shrink: 0; /* La imagen del álbum no debe encogerse */
+    width: 300px; /* Ancho deseado para la imagen del álbum */
+}
+
+.song-image-album-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Ajustar la imagen al contenedor */
+}
+
+.song-data-container {
+    flex: 1; /* La columna de datos ocupa todo el espacio restante */
+}
+
+.song-data-container h1 {
+    font-size: 24px;
+    margin-top: 0;
+}
+
+.song-data-container p {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.song-data-container audio {
+    width: 100%;
+    margin-top: 10px; /* Espacio superior para el reproductor de audio */
+}

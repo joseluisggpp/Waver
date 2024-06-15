@@ -10,6 +10,7 @@
 @import "detection-styles.css";
 @import "top10songs-styles.css";
 @import "contact-styles.css";
+@import "show-styles.css";
 
 * {
     padding: 0;

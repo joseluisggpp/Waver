@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\SongController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
@@ -9,9 +10,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::get('/top10songs', function () {
-    return view('top10songs');
-})->name('top10songs');
+Route::get('/top10songs', [SongController::class, 'index'])->name('top10songs');
+
+
+Route::get('/songs/{song}', [SongController::class, 'show'])->name('show');
 
 Route::get('/detection', function () {
     return view('detection');
@@ -44,6 +46,10 @@ Route::get('/cookies-settings', function () {
 Route::get('/faqs', function () {
     return view('faqs');
 })->name('faqs');
+
+
+
+
 
 Route::controller(CartController::class)->group(function () {
     Route::get('/cart', 'index')->name('cart');

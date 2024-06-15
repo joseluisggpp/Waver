@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('artista')->nullable();
             $table->string('album')->nullable();
             $table->unsignedBigInteger('cancion_idCancion');
-            $table->foreign('cancion_idCancion')->references('id')->on('cancion')->onDelete('cascade');
+            $table->foreign('cancion_idCancion')->references('id')->on('song')->onDelete('cascade');
             $table->timestamps();
         });
         Schema::create('carrito', function (Blueprint $table) {
