@@ -20,6 +20,7 @@ nav ul {
     justify-content: space-around;
     align-items: center;
     background-color: #121212;
+    height: 1.5em;
 }
 
 nav li {

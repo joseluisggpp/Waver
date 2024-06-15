@@ -1,4 +1,3 @@
-/* Estilos para el header, footer y formulario de login */
 @import "header-styles.css";
 @import "footer-styles.css";
 @import "home-styles.css";
@@ -7,15 +6,19 @@
 @import "cart-styles.css";
 @import "forgot-password-styles.css";
 @import "about-us-styles.css";
+@import "dashboard-styles.css";
+@import "detection-styles.css";
+@import "top10songs-styles.css";
+@import "contact-styles.css";
 
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
+
 body {
     background-color: #f6f6f6;
-
     font-family: Roboto, sans-serif;
 }
 

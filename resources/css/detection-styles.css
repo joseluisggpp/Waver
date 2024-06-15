@@ -1,0 +1,25 @@
+.detector-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img-container {
+    background-color: #67d0cc;
+    width: 200px; /* Ancho del contenedor */
+    height: 150px; /* Altura del contenedor */
+    overflow: hidden; /* Oculta cualquier contenido que se desborde del contenedor */
+    border-radius: 50%; /* Establece el radio de las esquinas para simular una elipse */
+    margin: 0 auto; /* Centra horizontalmente el contenedor */
+    position: relative; /* Asegura que los contenidos posicionados se alineen correctamente */
+}
+
+.logo-waver {
+    display: block; /* Asegura que la imagen se comporte como un bloque */
+    width: 100%; /* Ajusta el tamaño de la imagen al tamaño del contenedor */
+    height: auto; /* Permite que la altura se ajuste automáticamente */
+    position: absolute; /* Permite el posicionamiento dentro del contenedor */
+    top: 50%; /* Alinea la imagen en la mitad superior del contenedor */
+    transform: translateY(
+        -50%
+    ); /* Alinea verticalmente la imagen en el centro */
+}

@@ -16,8 +16,8 @@
             </div>
             <nav>
                 <ul>
-                    <a href="{{ route('top100songs') }}" class="href">
-                        <li><strong>Top 100 Canciones</strong></li>
+                    <a href="{{ route('top10songs') }}" class="href">
+                        <li><strong>Top 10 Canciones</strong></li>
                     </a>
                     <a href="{{ route('detection') }}" class="href">
                         <li><strong>Detección de canción</strong></li>
