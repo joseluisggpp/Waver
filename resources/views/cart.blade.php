@@ -14,7 +14,13 @@
                     <div class="product-chars"><span class="product-name">{{ $product->product->nombreProducto }}</span>
                         <span class="product-artist">{{ $product->product->artista }}</span>
                     </div>
-                    <div class="product-digits"><span class="product-price">{{ $product->product->precio }}€</span></div>
+                    <div class="product-digits"><span class="product-price">{{ $product->product->precio }}€</span>
+                        <form method="POST" action="{{ route('cart.destroy',[$product->id])}}">
+                            @csrf
+                            @method("DELETE")
+                            <button type="submit" class="checkout-button">Eliminar producto</button>
+                        </form>
+                    </div>
 
                 </div>
             </div>

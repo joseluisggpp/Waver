@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\Pedido_producto;
 use App\Models\Producto;
 use App\Models\Song;
 use Illuminate\Http\Request;
@@ -118,16 +119,19 @@ class CartController extends Controller
     public function destroy(Cart $cart)
     {
         //
+        if (auth()->id() !== $cart->usuarios_idUsuario) {
+            return redirect()->route('cart');
+        }
         $cart->delete();
 
         // Redireccionar con mensaje de éxito
-        return redirect()->route('cart.index')->with('success', 'Producto eliminado del carrito correctamente.');
+        return redirect()->route('cart')->with(['success' => 'Producto eliminado del carrito correctamente.']);
     }
+
     public function checkout()
     {
         // Obtener productos en el carrito del usuario actual
-        $cartItems = Cart::where('usuarios_idUsuario', auth()->id())->get();
-
+        $cartItems = Cart::all()->where('usuarios_idUsuario', auth()->id());
         // Calcular subtotal, IVA y total
         $subtotal = 0;
 
@@ -137,29 +141,30 @@ class CartController extends Controller
                 $subtotal += $item->product->precio;
             }
         }
-        ddd($cartItems);
         $iva = $subtotal * 0.21; // Suponiendo un IVA del 21%
         $total = $subtotal + $iva;
-
         // Crear un nuevo pedido en la base de datos
-        $order = new Order();
-        $order->usuarios_idUsuario = auth()->id(); // ID del usuario actual
-        $order->fechaPedido = now(); // Fecha actual
-        $order->estado = 'pendiente'; // Estado inicial del pedido
-        $order->total = $total;
-        $order->save();
+        $order = [
+            "usuarios_idUsuario" => auth()->id(), // ID del usuario actual
+            "fechaPedido" => now(), // Fecha actual
+            "total" => $total,
+            "estado" => 'pendiente' // Estado inicial del pedido
+        ];
+
+        $order = Order::create($order);
 
         // Asociar productos al pedido (sin especificar cantidad)
         foreach ($cartItems as $item) {
-            if ($item->product) {
-                $order->products()->attach($item->product->id);
-            }
+            $pedido_producto = Pedido_producto::create([
+                "pedido_id" => $order->id,
+                "producto_id" => $item->producto_idProducto
+            ]);
         }
 
         // Vaciar el carrito (eliminar productos del carrito)
         Cart::where('usuarios_idUsuario', auth()->id())->delete();
 
         // Redireccionar con mensaje de éxito y actualizar el panel de control
-        return redirect()->route('dashboard')->with('success', 'Compra realizada con éxito.');
+        return redirect()->route('dashboard')->with(['success' => 'Compra realizada con éxito.']);
     }
 }

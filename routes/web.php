@@ -51,16 +51,17 @@ Route::get('/faqs', function () {
 Route::post('/detect-song', [SongDetectionController::class, 'detectSong'])->name('detect.song');
 
 
-Route::post('/cart/add/{song}', [CartController::class, 'add'])->name('cart.add');
 
 Route::controller(CartController::class)->group(function () {
+
     Route::get('/cart', 'index')->name('cart');
     // Route::get('/cart/create', function () {
     //     return view('testingcart');
     // });
-    Route::post('/cart/{producto}', 'store');
+    Route::post('/cart/add/{song}', 'add')->name('cart.add');
     Route::post('/cart/checkout', 'checkout')->name('cart.checkout');
-    Route::delete('/cart/delete/{cart}')->name('cart.destroy');
+    Route::post('/cart/{producto}', 'store');
+    Route::delete('/cart/{cart}', 'destroy')->name('cart.destroy');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {

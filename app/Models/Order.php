@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
-    protected $table = 'pedido'; // Nombre de la tabla en la base de datos
+    protected $table = 'pedidos'; // Nombre de la tabla en la base de datos
 
     protected $fillable = [
         'usuarios_idUsuario',

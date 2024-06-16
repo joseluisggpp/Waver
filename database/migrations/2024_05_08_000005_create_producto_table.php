@@ -23,12 +23,12 @@ return new class extends Migration
             $table->timestamps();
         });
         Schema::create('carrito', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('usuarios_idUsuario');
             $table->unsignedBigInteger('producto_idProducto');
             $table->foreign('producto_idProducto')->references('id')->on('producto')->onDelete('cascade');
             $table->foreign('usuarios_idUsuario')->references('id')->on('users')->onDelete('cascade');
             $table->integer('cantidad')->default(1);
-            $table->primary(['producto_idProducto', 'usuarios_idUsuario']);
             $table->timestamps();
         });
     }
