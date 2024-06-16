@@ -66,9 +66,11 @@
                 <div class="card-header">Mis pedidos</div>
                 <div class="card-body">
                     <ul class="list-unstyled">
-                        <li>Rocket man - Elton John - 10€ - 10/4/2024</li>
-                        <li>Rocket man - Elton John - 10€ - 10/4/2024</li>
-                        <li>Rocket man - Elton John - 10€ - 10/4/2024</li>
+                        @foreach ($orderDetails as $order)
+                        @foreach ($order as $item)
+                        <li>{{ $item['producto']->nombre }} - {{ $item['producto']->artista }} - {{ $item['producto']->precio }}€ - {{ $item['pedido']->created_at->format('d/m/Y') }}</li>
+                        @endforeach
+                        @endforeach
                     </ul>
                 </div>
             </div>

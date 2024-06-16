@@ -14,18 +14,20 @@ class DashboardController extends Controller
         $user = auth()->user();
         $orders = Order::where("usuarios_idUsuario", $user->id)->get();
 
-        // Obtener los productos de cada pedido
-        $products = $orders->map(function ($order) {
+        $orderDetails = $orders->map(function ($order) {
             $pedido_productos = Pedido_producto::where("pedido_id", $order->id)->get();
             return $pedido_productos->map(function ($pedido_producto) {
-                return Producto::find($pedido_producto->producto_id);
+                $producto = Producto::find($pedido_producto->producto_id);
+                return [
+                    'producto' => $producto,
+                    'pedido' => $pedido_producto,
+                ];
             });
         });
 
         return view('dashboard', [
             'user' => $user,
-            'orders' => $orders,
-            'products' => $products,
+            'orderDetails' => $orderDetails,
         ]);
     }
 }
