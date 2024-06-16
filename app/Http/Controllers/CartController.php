@@ -27,11 +27,11 @@ class CartController extends Controller
 
         // Calcular subtotal, IVA y total
         $subtotal = $products->sum(function ($item) {
-            return $item->product ? $item->product->precio * $item->cantidad : 0;
+            return round($item->product ? $item->product->precio * $item->cantidad : 0, 2);
         });
 
-        $iva = $subtotal * 0.21; // Suponiendo un IVA del 21%
-        $total = $subtotal + $iva;
+        $iva = round($subtotal * 0.21, 2); // Suponiendo un IVA del 21%
+        $total = round($subtotal + $iva, 2);
 
         return view('cart', compact('products', 'subtotal', 'iva', 'total'));
     }
@@ -137,7 +137,7 @@ class CartController extends Controller
                 $subtotal += $item->product->precio;
             }
         }
-
+        ddd($cartItems);
         $iva = $subtotal * 0.21; // Suponiendo un IVA del 21%
         $total = $subtotal + $iva;
 

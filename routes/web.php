@@ -3,7 +3,9 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SongController;
+use App\Http\Controllers\SongDetectionController;
 use App\Http\Controllers\ProfileController;
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -45,15 +47,17 @@ Route::get('/cookies-settings', function () {
 Route::get('/faqs', function () {
     return view('faqs');
 })->name('faqs');
+/*Ruta detección de canción.*/
+Route::post('/detect-song', [SongDetectionController::class, 'detectSong'])->name('detect.song');
 
 
 Route::post('/cart/add/{song}', [CartController::class, 'add'])->name('cart.add');
 
 Route::controller(CartController::class)->group(function () {
     Route::get('/cart', 'index')->name('cart');
-    Route::get('/cart/create', function () {
-        return view('testingcart');
-    });
+    // Route::get('/cart/create', function () {
+    //     return view('testingcart');
+    // });
     Route::post('/cart/{producto}', 'store');
     Route::post('/cart/checkout', 'checkout')->name('cart.checkout');
     Route::delete('/cart/delete/{cart}')->name('cart.destroy');
