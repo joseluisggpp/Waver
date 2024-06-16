@@ -1,41 +1,46 @@
 @extends('layouts.app')
 
-@section('title', 'Cart')
+@section('title', 'Carrito')
 
 @section('content')
 <div class="cart-container">
     <div class="products-list">
+        @foreach ($products as $product)
         <div class="product">
             <div class="product-info">
-                <img src="product-image.jpg" alt="Product Image" class="product-image">
+                {{-- Aquí se debería mostrar la imagen, pero lo omitimos por ahora --}}
+                {{-- <img src="{{ asset($product->product->cancion->imagen) }}" alt="Product Image" class="product-image"> --}}
                 <div class="product-details">
-                    <span class="product-name">Nombre del Producto</span>
-                    <span class="product-price">10.00€</span>
+                    <span class="product-name">{{ $product->product->nombreProducto }}</span>
+                    <span class="product-price">{{ $product->product->precio }}€</span>
                     <div class="quantity">
-                        <input type="number" value="1" min="1" class="quantity-input">
-                        <button class="quantity-button">Actualizar</button>
+                        {{-- Eliminación del formulario de actualización --}}
                     </div>
                 </div>
             </div>
-            <button class="remove-button">Eliminar</button>
+            <form action="{{ route('cart.destroy', $product->id) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="remove-button">Eliminar</button>
+            </form>
         </div>
-        <!-- Repite este bloque para más productos -->
+        @endforeach
     </div>
     <div class="summary">
         <h2>Resumen del Pedido</h2>
         <div class="summary-item">
             <span>Subtotal</span>
-            <span>10.00€</span>
+            <span>{{ $subtotal }}€</span>
         </div>
         <div class="summary-item">
             <span>IVA (21%)</span>
-            <span>0</span>
+            <span>{{ $iva }}€</span>
         </div>
         <div class="summary-item total">
             <span>Total</span>
-            <span>10.00€</span>
+            <span>{{ $total }}€</span>
         </div>
         <button class="checkout-button">Pagar</button>
     </div>
 </div>
-@stop
+@endsection

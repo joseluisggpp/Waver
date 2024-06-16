@@ -12,7 +12,6 @@ Route::get('/', function () {
 
 Route::get('/top10songs', [SongController::class, 'index'])->name('top10songs');
 
-
 Route::get('/songs/{song}', [SongController::class, 'show'])->name('show');
 
 Route::get('/detection', function () {
@@ -48,8 +47,7 @@ Route::get('/faqs', function () {
 })->name('faqs');
 
 
-
-
+Route::post('/cart/add/{song}', [CartController::class, 'add'])->name('cart.add');
 
 Route::controller(CartController::class)->group(function () {
     Route::get('/cart', 'index')->name('cart');
@@ -57,7 +55,7 @@ Route::controller(CartController::class)->group(function () {
         return view('testingcart');
     });
     Route::post('/cart/{producto}', 'store');
-    Route::put('/cart/{producto}', 'update');
+    Route::delete('/cart/delete/{song}')->name('cart.destroy');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {

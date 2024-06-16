@@ -3,13 +3,17 @@
     margin: 0 auto;
     padding: 20px;
 }
-
 .song-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid #ddd;
     padding: 10px 0;
+    transition: 0.66s;
+}
+.song-container:hover {
+    transform: scale(1.1);
+    transition: 0.66s;
 }
 
 .song-container a.card {
