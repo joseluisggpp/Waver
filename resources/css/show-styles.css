@@ -50,3 +50,15 @@
 .song-data-container form {
     text-align: center;
 }
+/* Media query para pantallas más estrechas */
+@media (max-width: 625px) {
+    .song-show-container {
+        flex-direction: column; /* Cambia a una sola columna */
+        align-items: center; /* Centra los elementos */
+    }
+
+    .song-image-album-container {
+        width: 100%; /* Ocupa todo el ancho disponible */
+        max-width: 300px; /* Ajusta el máximo ancho de la imagen */
+    }
+}

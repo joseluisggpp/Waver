@@ -4,18 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Models\Song;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class SongController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $songs = Song::all(); // Obtener todas las canciones desde la base de datos
+        $perPage = $request->input('perPage', Session::get('perPage', 5)); // Obtener el valor de elementos por página del request o de la sesión
+        Session::put('perPage', $perPage); // Guardar el valor en la sesión
 
-        return view('top10songs', compact('songs')); // Pasar las canciones a la vista
+        $songs = Song::paginate($perPage); // Obtener canciones paginadas según la selección del usuario
+
+        return view('top10songs', compact('songs', 'perPage'));
     }
+
 
     /**
      * Show the form for creating a new resource.

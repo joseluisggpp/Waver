@@ -31,3 +31,10 @@ button {
 .wave-img {
     border-radius: 5px;
 }
+/* Media query para dispositivos con ancho igual o menor a 427px */
+@media (max-width: 427px) {
+    .cta-to-detection {
+        flex-direction: column;
+        text-align: center; /* Centra el contenido cuando está en una sola columna */
+    }
+}

@@ -1,9 +1,9 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SongController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -55,7 +55,8 @@ Route::controller(CartController::class)->group(function () {
         return view('testingcart');
     });
     Route::post('/cart/{producto}', 'store');
-    Route::delete('/cart/delete/{song}')->name('cart.destroy');
+    Route::post('/cart/checkout', 'checkout')->name('cart.checkout');
+    Route::delete('/cart/delete/{cart}')->name('cart.destroy');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {

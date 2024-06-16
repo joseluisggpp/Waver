@@ -11,18 +11,13 @@
                 {{-- Aquí se debería mostrar la imagen, pero lo omitimos por ahora --}}
                 {{-- <img src="{{ asset($product->product->cancion->imagen) }}" alt="Product Image" class="product-image"> --}}
                 <div class="product-details">
-                    <span class="product-name">{{ $product->product->nombreProducto }}</span>
-                    <span class="product-price">{{ $product->product->precio }}€</span>
-                    <div class="quantity">
-                        {{-- Eliminación del formulario de actualización --}}
+                    <div class="product-chars"><span class="product-name">{{ $product->product->nombreProducto }}</span>
+                        <span class="product-artist">{{ $product->product->artista }}</span>
                     </div>
+                    <div class="product-digits"><span class="product-price">{{ $product->product->precio }}€</span></div>
+
                 </div>
             </div>
-            <form action="{{ route('cart.destroy', $product->id) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="remove-button">Eliminar</button>
-            </form>
         </div>
         @endforeach
     </div>
@@ -40,7 +35,10 @@
             <span>Total</span>
             <span>{{ $total }}€</span>
         </div>
-        <button class="checkout-button">Pagar</button>
+        <form method="POST" action="{{ route('cart.checkout')}}">
+            @csrf
+            <button type="submit" class="checkout-button">Pagar</button>
+        </form>
     </div>
 </div>
 @endsection

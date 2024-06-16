@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('metodoPago');
             $table->decimal('monto');
             $table->unsignedBigInteger('pedido_idPedido');
-            $table->foreign('pedido_idPedido')->references('id')->on('pedido')->onDelete('cascade');
+            $table->foreign('pedido_idPedido')->references('id')->on('pedidos')->onDelete('cascade');
             $table->unsignedBigInteger('pedido_Usuario_idUsuario');
-            $table->foreign('pedido_Usuario_idUsuario')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('pedido_Usuario_idUsuario')->references('usuarios_idUsuario')->on('pedidos')->onDelete('cascade');
             $table->timestamps();
         });
     }

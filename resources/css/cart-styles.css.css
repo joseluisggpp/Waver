@@ -7,6 +7,9 @@
 }
 
 .products-list {
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #67d0cc;
     flex: 1;
     margin-right: 20px;
 }
@@ -22,17 +25,18 @@
 .product-info {
     display: flex;
     align-items: center;
-}
-
-.product-image {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    margin-right: 20px;
+    flex: 1; /* Para ocupar todo el espacio disponible */
 }
 
 .product-details {
-    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    flex: 1; /* Para ocupar todo el espacio disponible */
+}
+
+.product-chars {
+    display: flex;
+    flex-direction: column; /* Mostrar en columna */
 }
 
 .product-name {
@@ -41,38 +45,19 @@
     margin-bottom: 5px;
 }
 
+.product-artist {
+    font-size: 16px;
+    color: #121212;
+}
+
+.product-digits {
+    display: flex;
+    flex-direction: column; /* Mostrar en columna */
+    align-items: flex-end; /* Alinear a la derecha */
+}
+
 .product-price {
     font-size: 16px;
-}
-
-.quantity {
-    margin-top: 10px;
-}
-
-.quantity-input {
-    width: 50px;
-    padding: 5px;
-    font-size: 16px;
-    text-align: center;
-}
-
-.quantity-button {
-    padding: 5px 10px;
-    margin-left: 10px;
-    font-size: 14px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-.remove-button {
-    padding: 5px 10px;
-    font-size: 14px;
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    cursor: pointer;
 }
 
 .summary {
@@ -109,4 +94,20 @@
     color: #f6f6f6;
     border: none;
     cursor: pointer;
+}
+@media (max-width: 991px) {
+    .cart-container {
+        flex-direction: column; /* Cambia a una sola columna */
+        align-items: center; /* Centra los elementos */
+    }
+
+    .products-list {
+        margin-right: 0; /* Elimina el margen derecho */
+        margin-bottom: 20px; /* Agrega un espacio entre la lista de productos y el resumen */
+        width: 100%; /* Ocupa todo el ancho disponible */
+    }
+
+    .summary {
+        width: 100%; /* Ocupa todo el ancho disponible */
+    }
 }
