@@ -1,0 +1,9 @@
+cd Waver/
+sudo ./vendor/bin/sail up -d
+sudo docker exec waver_laravel.test_1 npm run build
+
+/*Si no funciona*/
+sudo ./vendor/bin/sail restart
+
+/*Repoblar la base de datos*/
+sudo ./vendor/bin/sail artisan migrate:fresh --seed
