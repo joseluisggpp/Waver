@@ -13,12 +13,19 @@
         <div class="song-data-container">
             <h1>{{ $song->titulo }}</h1>
             <p>Artista: {{ $song->artista }}</p>
+            @if (isset($song->album))
             <p>Álbum: {{ $song->album }}</p>
+            @endif
+            @if (isset($song->duracion))
             <p>Duración: {{ $song->duracion }} segundos</p>
+            @endif
+            @if (isset($song->archivo_mp3))
             <audio controls>
                 <source src="{{ asset($song->archivo_mp3) }}" type="audio/mpeg">
                 Tu navegador no soporta el elemento de audio.
             </audio>
+            @endif
+
             <!-- Formulario para añadir al carrito -->
             <form action="{{ route('cart.add', $song->id) }}" method="POST">
                 @csrf

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Song;
+use App\Models\Producto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -36,6 +37,25 @@ class SongController extends Controller
     public function store(Request $request)
     {
         //
+        $song = $request->validate([
+            'titulo' => ['required', 'string'],
+            'artista' => ['required', 'string'],
+            'imagen_album' => ['required', 'string'],
+
+        ]);
+
+        $song = Song::create($song);
+        $product = Producto::create([
+
+            'nombreProducto' => $song->titulo,
+            'tipoProducto' => 'Cancion',
+            'precio' => '4.99',
+            'artista' => $song->artista,
+            'album' => $song->album,
+            'cancion_idCancion' => $song->id
+
+        ]);
+        return redirect('/songs/' . $song->id);
     }
 
     /**

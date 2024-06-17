@@ -20,7 +20,7 @@ class CartController extends Controller
         // Obtener todos los productos del carrito del usuario actual
         $cart = Cart::where('usuarios_idUsuario', auth()->id())->get();
 
-        // Cargar la relación `product` para cada elemento en el carrito
+        // Cargar la entidad `product` para cada elemento en el carrito
         $products = $cart->map(function ($item) {
             $item->product = Producto::find($item->producto_idProducto);
             return $item;

@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('song', function (Blueprint $table) {
             $table->id();
             $table->string('titulo');
-            $table->string('artista')->nullable();
+            $table->string('artista');
             $table->string('album')->nullable();
-            $table->integer('duracion');
-            $table->string('imagen_album'); // Nuevo campo para la imagen del álbum
-            $table->string('archivo_mp3'); // Nuevo campo para el archivo MP3 de la canción
+            $table->integer('duracion')->nullable();
+            $table->string('imagen_album')->nullable(); // Nuevo campo para la imagen del álbum
+            $table->string('archivo_mp3')->nullable(); // Nuevo campo para el archivo MP3 de la canción
 
             $table->timestamps();
         });

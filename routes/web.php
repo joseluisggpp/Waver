@@ -47,8 +47,10 @@ Route::get('/cookies-settings', function () {
 Route::get('/faqs', function () {
     return view('faqs');
 })->name('faqs');
+
 /*Ruta detección de canción.*/
-Route::post('/detect-song', [SongDetectionController::class, 'detectSong'])->name('detect.song');
+
+Route::post('song', [SongController::class, 'store'])->middleware('auth');
 
 
 
