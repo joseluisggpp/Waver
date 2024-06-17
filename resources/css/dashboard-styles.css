@@ -79,15 +79,16 @@
     background-color: #121212;
 }
 
-.list-unstyled {
-    list-style: none;
-    padding: 0;
+.order-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
-
-.list-unstyled li {
-    margin-bottom: 10px;
+.order-container {
+    padding: 5px;
+    background-color: #e1c9c9;
+    border-radius: 10px;
 }
-
 .logout-button {
     margin-top: 10px;
 }

@@ -65,38 +65,51 @@
             <div class="card">
                 <div class="card-header">Mis pedidos</div>
                 <div class="card-body">
-                    <ul class="list-unstyled">
-                        @foreach ($orderDetails as $order)
-                        @foreach ($order as $item)
-                        <li>{{ $item['producto']->nombre }} - {{ $item['producto']->artista }} - {{ $item['producto']->precio }}€ - {{ $item['pedido']->created_at->format('d/m/Y') }}</li>
+                    <div class="order-list">
+                        @foreach ($orders as $order)
+                        <div class="order-container">
+                            <div class="order-header"><strong>Pedido</strong></div>
+                            <div class="span-container">
+                                <span>Total: {{$order->total}}€, </span>
+                                <span>Estado: {{$order->estado}}, </span>
+                                <span>Fecha de Pedido: {{$order->fechaPedido}}</span>
+                            </div>
+                        </div>
                         @endforeach
-                        @endforeach
-                    </ul>
+                        </d>
+                    </div>
                 </div>
-            </div>
 
-            <div class="card">
-                <div class="card-header">Biblioteca</div>
-                <div class="card-body">
-                    <ul class="list-unstyled">
-                        <li>Rocket man - Elton John - 4:42</li>
-                        <li>Mask off - Future - 3:25</li>
-                        <li>Rocket man - Elton John - 4:42</li>
-                    </ul>
+                <div class="card">
+                    <div class="card-header">Biblioteca</div>
+                    <div class="card-body">
+                        <div class="order-list">
+                            @foreach ($products as $product)
+                            <div class="order-container">
+                                <div class="order-header"><strong>Producto</strong></div>
+                                <div class="span-container">
+                                    <span>Título: {{$product->nombreProducto}}, </span>
+                                    <span>Artista: {{$product->artista}}, </span>
+                                    <span>Álbum: {{$product->album}}</span>
+                                </div>
+                            </div>
+                            @endforeach
+                            </d>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-            <div class="card">
-                <div class="card-header">Historial de Búsquedas</div>
-                <div class="card-body">
-                    <ul class="list-unstyled">
-                        <li>Rocket man - Elton John - 10/4/2024</li>
-                        <li>Rocket man - Elton John - 10/4/2024</li>
-                        <li>Rocket man - Elton John - 10/4/2024</li>
-                    </ul>
+                <div class="card">
+                    <div class="card-header">Historial de Búsquedas</div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li>Rocket man - Elton John - 10/4/2024</li>
+                            <li>Rocket man - Elton John - 10/4/2024</li>
+                            <li>Rocket man - Elton John - 10/4/2024</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-@endsection
+    @endsection

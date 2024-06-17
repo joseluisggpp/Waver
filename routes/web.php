@@ -55,10 +55,9 @@ Route::post('/detect-song', [SongDetectionController::class, 'detectSong'])->nam
 Route::controller(CartController::class)->group(function () {
 
     Route::get('/cart', 'index')->name('cart');
-    // Route::get('/cart/create', function () {
-    //     return view('testingcart');
-    // });
-    Route::post('/cart/add/{song}', 'add')->name('cart.add');
+
+    Route::post('/cart/add/{song}', 'add')->name('cart.add')->middleware(['auth']);
+
     Route::post('/cart/checkout', 'checkout')->name('cart.checkout');
     Route::post('/cart/{producto}', 'store');
     Route::delete('/cart/{cart}', 'destroy')->name('cart.destroy');

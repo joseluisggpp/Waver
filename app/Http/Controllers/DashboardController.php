@@ -13,21 +13,11 @@ class DashboardController extends Controller
     {
         $user = auth()->user();
         $orders = Order::where("usuarios_idUsuario", $user->id)->get();
-
-        $orderDetails = $orders->map(function ($order) {
-            $pedido_productos = Pedido_producto::where("pedido_id", $order->id)->get();
-            return $pedido_productos->map(function ($pedido_producto) {
-                $producto = Producto::find($pedido_producto->producto_id);
-                return [
-                    'producto' => $producto,
-                    'pedido' => $pedido_producto,
-                ];
-            });
-        });
-
+        $orderDetails = Order::getProducts();
         return view('dashboard', [
             'user' => $user,
-            'orderDetails' => $orderDetails,
+            'orders' => $orders,
+            'products' => $orderDetails
         ]);
     }
 }
